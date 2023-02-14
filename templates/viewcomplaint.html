@@ -1,0 +1,46 @@
+{% extends 'adminpage.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">COMPLAINT</h4>
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>sl no</th>
+
+                          <th>DATE</th>
+                          <th>SUBJECT</th>
+                          <th>REPLAY</th>
+
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for i in data %}
+                        <tr>
+                          <td class="py-1">{{forloop.counter}}</td>
+
+                          <td>{{i.date}}</td>
+                          <td>{{i.complaint}}</td>
+                          <td>{% if i.replay == None %}
+                          <a class="btn btn-success"href="{% url 'com_replay' i.id %}">REPLAY</a>
+                          {% else %}
+                          {{i.replay}}
+                          {% endif %}
+                          </td>
+
+
+
+
+                        </tr>
+                      {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+{% endblock %}

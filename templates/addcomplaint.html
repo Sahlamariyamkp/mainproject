@@ -1,0 +1,13 @@
+{% extends 'student.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+<div>
+    {{form|crispy}}
+    <center>  <button type="submit" class="btn btn-primary">SUBMIT</button>
+    </center>
+
+</div>
+</form>
+{% endblock %}

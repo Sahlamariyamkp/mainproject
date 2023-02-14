@@ -1,0 +1,52 @@
+{% extends 'adminpage.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Parent</h4>
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>sl No.</th>
+                          <th>PARENT NAME</th>
+                          <th>STUDENT NAME</th>
+                          <th>REG_ID</th>
+                          <th>EMAIL</th>
+                          <th>PHONE</th>
+                          <th>ADDRESS</th>
+                          <th>STATUS</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for i in data %}
+                        <tr>
+                          <td class="py-1">{{forloop.counter}}</td>
+                          <td>{{i.parent_name}}</td>
+                          <td>{{i.student_name}}</td>
+                          <td>{{i.reg_id}}</td>
+                          <td>{{i.email}}</td>
+                          <td>{{i.phone}}</td>
+                          <td>{{i.address}}</td>
+                           <td>
+                             {% if i.approval_status == 0 %}
+                             <a class="btn btn-success" href="{% url 'approve_parent' i.user_id %}">APPROVE</a>
+                             <a class="btn btn-danger" href="{% url 'reject_parent' i.user_id %}">REJECT</a>
+                             {% elif i.approval_status == 1 %}
+                             <p class="btn btn-success">Approved</p>
+                             {% elif i.approval_status == 2 %}
+                             <p class="btn btn-danger">Rejected</p>
+                             {% endif %}
+                          </td>
+
+                        </tr>
+                      {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+{% endblock %}

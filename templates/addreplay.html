@@ -1,0 +1,15 @@
+{% extends 'adminpage.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+             <textarea name="replay"></textarea>
+            <br>
+            <button type="submit" class="btn btn-primary"href="{%url 'view_complaint' }">SUBMIT</button>
+        </form>
+
+    </div>
+</div>
+{% endblock %}

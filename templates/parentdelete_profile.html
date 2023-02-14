@@ -1,0 +1,16 @@
+{% extends 'parent.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form|crispy}}
+            <h3>Are you want to delete this account ?</h3>
+            <button type="submit" class="btn btn-danger" href="{% url 'delete_profile_parent' %}">DELETE</button>
+            <button type="submit" class="btn btn-success"href="">CANCEL</button>
+        </form>
+
+    </div>
+</div>
+{% endblock %}
